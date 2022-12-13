@@ -4,7 +4,9 @@
 const fs = require('fs');
 const execSync = require('child_process').execSync;
 
-const BASE_PATH = 'C:/tmp/HW3-10-03-2022-10-13-08/'
+const myArgs = process.argv.slice(2);
+
+const BASE_PATH = myArgs[0];
 // const BASE_PATH = 'D:/YourPath/YourFolder/UseTheseSlashes/IncludeEndingSlash/'
 let packageJsonLocations = [];
 
@@ -14,9 +16,9 @@ students.forEach(student => {
 });
 
 packageJsonLocations.forEach(location => {
-    console.log("Executing NPM i for " + location);
+    console.log("Executing pnpm i for " + location);
     try {
-        execSync("cd " + location + " && npm i");
+        execSync("cd " + location + " && pnpm i");
     } catch (error) {
         console.error("ERROR ON " + location);
     }
